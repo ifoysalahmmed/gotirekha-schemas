@@ -20,6 +20,6 @@ pnpm builds the package on install (`prepare`), so the installing program has to
 
 1. Pull request, then merge to `main`.
 2. Tag `main` with the new version (`git tag v0.2.0`) and push the tag (`git push origin v0.2.0`).
-3. Raise the tag in each program that uses it.
+3. Raise the tag in each program that uses it (`pnpm add github:ifoysalahmmed/gotirekha-schemas#vX.Y.Z`), and replace the commit hash in that program's `pnpm-workspace.yaml` (`allowBuilds`); the install error prints the new one.
 
 A change that breaks a record is a new major version. The program that reads a record is deployed before the one that sends it.
