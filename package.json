@@ -1,6 +1,6 @@
 {
   "name": "@gotirekha/schemas",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shapes and fixed lists shared by the Gotirekha programs",
   "private": true,
   "type": "module",
