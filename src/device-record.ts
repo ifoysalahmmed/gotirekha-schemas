@@ -39,9 +39,21 @@ export const StatusRecord = z.object({
 
 export type StatusRecord = z.infer<typeof StatusRecord>;
 
+export const RefusedRecord = z.object({
+  ...recordFields,
+  kind: z.literal('refused'),
+  firstAt: UtcTime,
+  port: z.int().min(1024).max(65535),
+  ip: z.union([z.ipv4(), z.ipv6()]).nullable(),
+  attempts: z.int().min(1),
+});
+
+export type RefusedRecord = z.infer<typeof RefusedRecord>;
+
 export const DeviceRecord = z.discriminatedUnion('kind', [
   PositionRecord,
   StatusRecord,
+  RefusedRecord,
 ]);
 
 export type DeviceRecord = z.infer<typeof DeviceRecord>;
