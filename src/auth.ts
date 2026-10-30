@@ -58,6 +58,8 @@ export const ApiErrorCode = z.enum([
   'account_disabled',
   'wrong_password',
   'too_many_tries',
+  'not_found',
+  'internal',
 ]);
 
 export type ApiErrorCode = z.infer<typeof ApiErrorCode>;
