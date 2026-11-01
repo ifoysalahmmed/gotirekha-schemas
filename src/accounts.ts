@@ -31,6 +31,18 @@ export const ClientRole = Role.extract([
 
 export type ClientRole = z.infer<typeof ClientRole>;
 
+export const ManagedStaffRole = StaffRole.exclude(['super_user']);
+
+export type ManagedStaffRole = z.infer<typeof ManagedStaffRole>;
+
+export const AccountStatus = z.enum(['active', 'disabled']);
+
+export type AccountStatus = z.infer<typeof AccountStatus>;
+
+export const Name = z.string().trim().min(1).max(100);
+
+export type Name = z.infer<typeof Name>;
+
 export const Phone = z
   .string()
   .overwrite((value) => value.replace(/[\s-]/g, ''))
