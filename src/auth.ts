@@ -59,6 +59,7 @@ export const ApiErrorCode = z.enum([
   'forbidden',
   'wrong_password',
   'already_taken',
+  'has_objects',
   'too_many_tries',
   'not_found',
   'internal',
