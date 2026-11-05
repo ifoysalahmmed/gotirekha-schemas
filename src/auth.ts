@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { Password, Phone, Role } from './accounts.js';
-import { UtcTime } from './common.js';
+import { NamedId, UtcTime } from './common.js';
 
 const EnteredPassword = z.string().min(1).max(128);
 
@@ -60,6 +60,8 @@ export const ApiErrorCode = z.enum([
   'wrong_password',
   'already_taken',
   'has_objects',
+  'imei_taken',
+  'no_device',
   'too_many_tries',
   'not_found',
   'internal',
@@ -72,10 +74,16 @@ const ApiIssue = z.object({
   message: z.string(),
 });
 
+const ImeiHolder = z.object({
+  client: NamedId,
+  object: NamedId,
+});
+
 export const ApiError = z.object({
   error: ApiErrorCode,
   message: z.string(),
   issues: z.array(ApiIssue).optional(),
+  holder: ImeiHolder.optional(),
 });
 
 export type ApiError = z.infer<typeof ApiError>;
