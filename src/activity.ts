@@ -8,6 +8,12 @@ export const ActivityAction = z.enum([
   'account.delete',
   'account.password_reset',
   'account.password_change',
+  'client.create',
+  'client.update',
+  'client.disable',
+  'client.enable',
+  'client.delete',
+  'client.account_cap_change',
   'client.reseller_change',
 ]);
 
