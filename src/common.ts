@@ -24,6 +24,17 @@ export const Id = z.string().regex(/^[1-9][0-9]{0,17}$/);
 
 export type Id = z.infer<typeof Id>;
 
+export const NamedId = z.object({
+  id: z.string(),
+  name: z.string(),
+});
+
+export type NamedId = z.infer<typeof NamedId>;
+
+export const DateOnly = z.iso.date();
+
+export type DateOnly = z.infer<typeof DateOnly>;
+
 export const PageQuery = z.object({
   page: z.coerce.number().int().min(1).max(1_000_000).default(1),
   pageSize: z.coerce.number().int().min(1).max(100).default(25),

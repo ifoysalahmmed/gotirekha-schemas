@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { AccountStatus, Email, Name, Phone, Username } from './accounts.js';
-import { Id, paged, PageQuery, UtcTime } from './common.js';
+import { Id, NamedId, paged, PageQuery, UtcTime } from './common.js';
 
 export const ClientType = z.enum(['individual', 'corporate', 'demo']);
 
@@ -13,11 +13,6 @@ export type RegularClientType = z.infer<typeof RegularClientType>;
 export const ClientStatus = z.enum(['active', 'disabled']);
 
 export type ClientStatus = z.infer<typeof ClientStatus>;
-
-const NamedId = z.object({
-  id: z.string(),
-  name: z.string(),
-});
 
 export const ClientAccount = z.object({
   id: z.string(),
