@@ -213,3 +213,20 @@ export const SetExpiryRequest = z.object({
 });
 
 export type SetExpiryRequest = z.infer<typeof SetExpiryRequest>;
+
+export const InstallStage = z.enum(['saved', 'first_data', 'live']);
+
+export type InstallStage = z.infer<typeof InstallStage>;
+
+export const ObjectCheck = z.object({
+  name: z.string(),
+  plate: z.string().nullable(),
+  client: NamedId,
+  status: ObjectStatus,
+  device: FittedDevice,
+  stage: InstallStage,
+  lastSeenAt: UtcTime.nullable(),
+  positionAt: UtcTime.nullable(),
+});
+
+export type ObjectCheck = z.infer<typeof ObjectCheck>;
