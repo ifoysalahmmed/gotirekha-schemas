@@ -8,4 +8,5 @@ export * from './history.js';
 export * from './objects.js';
 export * from './queue.js';
 export * from './staff.js';
+export * from './users.js';
 export * from './vehicles.js';
