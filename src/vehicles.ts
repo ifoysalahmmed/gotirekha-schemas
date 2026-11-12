@@ -7,6 +7,12 @@ export const OFFLINE_AFTER_S = 600;
 
 export const DRIVING_FRESH_S = 60;
 
+export const DEFAULT_SPEED_LIMIT_KMH = 80;
+
+export const SpeedLimit = z.int().min(10).max(200);
+
+export type SpeedLimit = z.infer<typeof SpeedLimit>;
+
 export const Motion = z.enum(['driving', 'idle', 'parked']);
 
 export type Motion = z.infer<typeof Motion>;
@@ -43,10 +49,17 @@ export const Vehicle = z.object({
   driverName: z.string().nullable(),
   inactiveDate: DateOnly,
   expired: z.boolean(),
+  speedLimitKmh: SpeedLimit,
   state: VehicleState.nullable(),
 });
 
 export type Vehicle = z.infer<typeof Vehicle>;
+
+export const SpeedLimitRequest = z.object({
+  speedLimitKmh: SpeedLimit,
+});
+
+export type SpeedLimitRequest = z.infer<typeof SpeedLimitRequest>;
 
 export const Vehicles = z.array(Vehicle);
 
