@@ -26,6 +26,7 @@ export const ActivityAction = z.enum([
   'object.expiry_change',
   'object.disable',
   'object.enable',
+  'object.speed_limit_change',
 ]);
 
 export type ActivityAction = z.infer<typeof ActivityAction>;
