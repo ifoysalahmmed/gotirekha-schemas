@@ -1,5 +1,6 @@
 export * from './accounts.js';
 export * from './activity.js';
+export * from './addresses.js';
 export * from './auth.js';
 export * from './clients.js';
 export * from './common.js';
