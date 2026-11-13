@@ -29,6 +29,13 @@ export const VehiclePosition = z.object({
 
 export type VehiclePosition = z.infer<typeof VehiclePosition>;
 
+export const DayDistance = z.object({
+  date: DateOnly,
+  distanceM: z.number().min(0),
+});
+
+export type DayDistance = z.infer<typeof DayDistance>;
+
 export const VehicleState = z.object({
   position: VehiclePosition.nullable(),
   ignition: z.boolean().nullable(),
@@ -37,6 +44,7 @@ export const VehicleState = z.object({
   gsmSignal: Percent.nullable(),
   motion: Motion.nullable(),
   lastSeenAt: UtcTime,
+  dayDistance: DayDistance.nullable(),
 });
 
 export type VehicleState = z.infer<typeof VehicleState>;
@@ -50,6 +58,7 @@ export const Vehicle = z.object({
   inactiveDate: DateOnly,
   expired: z.boolean(),
   speedLimitKmh: SpeedLimit,
+  odometerM: z.number().min(0),
   state: VehicleState.nullable(),
 });
 
@@ -74,6 +83,7 @@ export type UpdateVehicleRequest = z.infer<typeof UpdateVehicleRequest>;
 
 export const LiveState = VehicleState.extend({
   objectId: z.string(),
+  odometerM: z.number().min(0),
 });
 
 export type LiveState = z.infer<typeof LiveState>;
