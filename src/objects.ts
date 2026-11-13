@@ -66,6 +66,16 @@ export const Sim = z
 
 export type Sim = z.infer<typeof Sim>;
 
+export const OdometerKm = z.int().min(0).max(9_999_999);
+
+export type OdometerKm = z.infer<typeof OdometerKm>;
+
+export const OdometerRequest = z.object({
+  odometerKm: OdometerKm,
+});
+
+export type OdometerRequest = z.infer<typeof OdometerRequest>;
+
 export const DeviceModel = z.object({
   id: z.string(),
   name: z.string(),
@@ -107,6 +117,7 @@ export const TrackedObject = z.object({
   status: ObjectStatus,
   device: FittedDevice.nullable(),
   lastSeenAt: UtcTime.nullable(),
+  odometerM: z.number().min(0),
   createdAt: UtcTime,
 });
 
@@ -160,6 +171,7 @@ const NewObjectFields = z.object({
   installationDate: DateOnly.optional(),
   inactiveDate: DateOnly.optional(),
   serverAddress: ServerAddress.optional(),
+  odometerKm: OdometerKm.optional(),
 });
 
 const datesInOrder = (value: {
